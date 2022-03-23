@@ -3,17 +3,17 @@
 ```bash
 server {
     listen 443 ssl http2;
-    server_name moodle30d.my.id;
-    ssl_certificate           /etc/letsencrypt/live/moodle30d.my.id/fullchain.pem;
-    ssl_certificate_key       /etc/letsencrypt/live/moodle30d.my.id/privkey.pem;
+    server_name domain.my.id;
+    ssl_certificate           /etc/letsencrypt/live/domain.my.id/fullchain.pem;
+    ssl_certificate_key       /etc/letsencrypt/live/domain.my.id/privkey.pem;
 
     ssl_session_cache  builtin:1000  shared:SSL:10m;
     ssl_protocols TLSv1.2;
     ssl_ciphers HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
     ssl_prefer_server_ciphers on;
 
-    access_log            /var/log/nginx/moodle30d.my.id_access.log;
-    error_log             /var/log/nginx/moodle30d.my.id_error.log;
+    access_log            /var/log/nginx/domain.my.id_access.log;
+    error_log             /var/log/nginx/domain.my.id_error.log;
 
         location / {
             proxy_http_version 1.1;
