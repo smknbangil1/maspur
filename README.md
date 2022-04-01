@@ -41,7 +41,7 @@ sub vcl_recv {
     #
     # Typically you clean up the request here, removing cookies you don't need,
     # rewriting the request, etc.
-    if (client.ip != "127.0.0.1" && req.http.host ~ "domain.my.id") {
+    if (client.ip != "127.0.0.1" && req.http.host ~ "^(www.)?domain.my.id$") {
        set req.http.x-redir = "https://domain.my.id" + req.url;
        return(synth(850, ""));
     }
