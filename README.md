@@ -56,4 +56,23 @@ sub vcl_synth {
     }
 }
 ```
-### virtualhost apache, default aja
+### virtualhost apache 
+```bash
+<VirtualHost *:8080>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/moodle
+
+        <FilesMatch \.php$>
+                SetHandler "proxy:unix:/var/run/php/php7.4-fpm.sock|fcgi://localhost"
+        </FilesMatch>
+        
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+## Cara Mengatasi Apache2 [mpm_event:notice] [pid 677:tid 139638138522688] AH00491: caught SIGTERM, shutting down 
+```bash
+apache2ctl -S
+```
+perintah diatas akan menunjukkan kesalahan konfig apache2
+apache2ctl -S will show the vhost config files. It helps to find the vhost that causes the 404 / file not found.
