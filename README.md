@@ -24,9 +24,9 @@ server {
             proxy_set_header X-Forwarded-Proto $scheme;
             proxy_cache_bypass $http_upgrade;
             proxy_pass_request_headers on;
-            proxy_pass http://127.0.0.1:80;
+            proxy_pass http://127.0.0.1:6081;
         }
-
+    listen 80;
     }
 ```
 ## Varnis Cache Reverse Proxy 
@@ -76,3 +76,5 @@ apache2ctl -S
 ```
 perintah diatas akan menunjukkan kesalahan konfig apache2
 apache2ctl -S will show the vhost config files. It helps to find the vhost that causes the 404 / file not found.
+
+sumber https://idroot.us/install-varnish-ubuntu-20-04/
